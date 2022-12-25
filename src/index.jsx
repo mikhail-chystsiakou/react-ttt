@@ -5,11 +5,14 @@ import ReactDOM from 'react-dom/client'
 
 import App from './App'
 import reportWebVitals from './reportWebVitals'
+import { GameWrapper } from './useBoardLogic'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    <App />
+    <GameWrapper>
+      <App />
+    </GameWrapper>
   </React.StrictMode>
 )
 

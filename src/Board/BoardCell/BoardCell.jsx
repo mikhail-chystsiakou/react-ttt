@@ -2,9 +2,13 @@ import './BoardCell.css'
 
 import { memo } from 'react'
 
-export const BoardCell = memo(({ isCrossMove, cellValue, makeMove, index }) => {
+import { useBoardLogic } from '../../useBoardLogic'
+
+export const BoardCell = memo(({ cellValue, index }) => {
+  const { makeMove, isCrossMove } = useBoardLogic()
+
   return (
-    <div className="cell" onClick={!cellValue && (() => makeMove(index))}>
+    <div className="cell" onClick={!cellValue ? () => makeMove(index) : () => {}}>
       <div
         className="cell__container"
         // thats why in react we use css in js
