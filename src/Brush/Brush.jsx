@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 
-const Brush = ({ imageStyles }) => {
+import { useBoardLogic } from '../useBoardLogic'
+
+const Brush = () => {
   const [brushStroke, setBrushStroke] = useState(1)
+  const { getWinnerBrushStyles } = useBoardLogic()
 
   useEffect(() => {
     if (brushStroke >= 15) {
@@ -15,7 +18,7 @@ const Brush = ({ imageStyles }) => {
     return () => clearTimeout(timer)
   }, [brushStroke])
 
-  return <img style={imageStyles} src={`img/brush/${brushStroke}.png`}/>
+  return <img style={getWinnerBrushStyles()} src={`img/brush/${brushStroke}.png`} />
 }
 
 export { Brush }
