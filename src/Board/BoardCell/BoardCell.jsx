@@ -4,7 +4,7 @@ import { memo } from 'react'
 
 export const BoardCell = memo(({ isCrossMove, cellValue, makeMove, index }) => {
   return (
-    <div className="cell" onClick={!cellValue && makeMove.bind(null, index)}>
+    <div className="cell" onClick={!cellValue && (() => makeMove(index))}>
       <div
         className="cell__container"
         // thats why in react we use css in js

@@ -15,17 +15,20 @@ function App() {
     winRow: null
   })
 
-  const makeMove = useCallback((cellIndex) => {
-    console.log(`move: ${cellIndex}`)
-    if (winner.winner !== '') {
-      return
-    }
-    const { isCrossMove } = state
-    setState({
-      board: state.board.map((v, i) => (i === cellIndex ? (isCrossMove ? 'X' : 'O') : v)),
-      isCrossMove: !isCrossMove
-    })
-  })
+  const makeMove = useCallback(
+    (cellIndex) => {
+      console.log(`move: ${cellIndex}`)
+      if (winner.winner !== '') {
+        return
+      }
+      const { isCrossMove } = state
+      setState({
+        board: state.board.map((v, i) => (i === cellIndex ? (isCrossMove ? 'X' : 'O') : v)),
+        isCrossMove: !isCrossMove
+      })
+    },
+    [winner.winner, state.board, state.isCrossMove]
+  )
 
   useEffect(() => {
     checkWinner()
@@ -89,7 +92,7 @@ function App() {
     // here we can store of each name of win case like [{case: [0, 1, 2], name: top-left}]
     // then after filtering, assign the name of the winner directly to winnerRow
     const winRow = winRowOptions.filter(
-      (w) => (w) => b[w[0]] === b[w[1]] && b[w[1]] === b[w[2]] && b[w[0]] !== ''
+      (w) => b[w[0]] === b[w[1]] && b[w[1]] === b[w[2]] && b[w[0]] !== ''
     )
     console.log('Result of winner check: ' + winRow)
 

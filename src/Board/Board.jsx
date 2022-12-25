@@ -10,7 +10,7 @@ export const Board = ({ isCrossMove, board, makeMove }) => {
       {board.map((value, i) => {
         return (
           <BoardCell
-            key={`${value}-${i}`}
+            key={`${i}`}
             isCrossMove={isCrossMove}
             cellValue={value}
             makeMove={makeMove}
