@@ -15,7 +15,7 @@ const Brush = ({ imageStyles }) => {
     return () => clearTimeout(timer)
   }, [brushStroke])
 
-  return <img style={imageStyles} src={`img/brush/${brushStroke}.png`}/>
+  return <img style={imageStyles} src={`img/brush/${brushStroke}.png`} />
 }
 
 export { Brush }
